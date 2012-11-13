@@ -1,0 +1,9 @@
+:hierarchy:
+- hosts/%{hostname}
+- customers/%{customer}
+- common
+
+:backends:
+- yaml
+:yaml:
+  :datadir: "/etc/puppetlabs/puppet/hieradata/%{environments}"

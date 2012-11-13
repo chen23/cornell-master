@@ -1,0 +1,4 @@
+---
+vhosts:
+  'www1.cit': {}
+  'www2.cit': {}
