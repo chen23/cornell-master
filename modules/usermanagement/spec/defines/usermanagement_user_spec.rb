@@ -26,6 +26,7 @@ describe 'usermanagement::user', :type => :define do
       }
     end
 
+    it { should contain_usermanagement__user('elvis') }
     it { should contain_user('elvis') }
     it { should contain_group('elvis') }
     it { should contain_file('/home/elvis').with({
