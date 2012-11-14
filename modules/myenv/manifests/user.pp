@@ -1,9 +1,8 @@
-myenv { 'rootuser':
-  username => 'root',
-}
-myenv { 'hunner': }
-
-define myenv ($username = $name) {
+# myenv::user { 'rootuser':
+#   username => 'root',
+# }
+# myenv::user { 'hunner': }
+define myenv::user ($username = $name) {
 
   $homedir = $username ? {
     'root'  => '/root',
