@@ -3,6 +3,7 @@
 # }
 # myenv::user { 'hunner': }
 define myenv::user ($username = $name) {
+  include myenv
 
   $homedir = $username ? {
     'root'  => '/root',
