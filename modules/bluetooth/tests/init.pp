@@ -1,1 +1,2 @@
-include bluetooth
+class { 'bluetooth': }
+# include bluetooth
