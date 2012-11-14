@@ -1,12 +1,21 @@
-class bluetooth {
+class bluetooth($enable=true) {
+  validate_bool($enable)
+
+  if $enable {
+    Package['bluez-libs'] -> Package['bluez-utils'] -> Service['hidd']
+  } else {
+    Package['bluez-libs'] <- Package['bluez-utils'] <- Service['hidd']
+  }
+
   package { ['bluez-libs','bluez-utils']:
-    ensure => present,
-    notify => Service['hidd'],
+    ensure => $enable ? {
+      true  => 'present',
+      false => 'absent',
+    },
   }
   service { 'hidd':
-    ensure    => running,
-    enable    => true,
+    ensure    => $enable,
+    enable    => $enable,
     hasstatus => false,
-    #status   => 'source /etc/init.d/functions && status hidd',
   }
 }

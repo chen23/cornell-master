@@ -1,0 +1,3 @@
+class { 'bluetooth':
+  enable => 'false',
+}
