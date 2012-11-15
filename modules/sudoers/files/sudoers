@@ -79,7 +79,7 @@ Defaults    env_keep = "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR \
 ## The COMMANDS section may have other options added to it.
 ##
 ## Allow root to run any commands anywhere 
-root	  ALL=(ALL) 	ALL
+root	ALL=(ALL) 	ALL
 hunner	ALL=(ALL) 	ALL
 
 ## Allows members of the 'sys' group to run networking, software, 

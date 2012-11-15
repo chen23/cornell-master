@@ -9,16 +9,16 @@ class sudoers($tmpfile = '/tmp/sudoers') {
     source => 'puppet:///modules/sudoers/sudoers',
   }
 
-  exec { 'visudo sudoers':
-    command => "visudo -c -f ${tmpfile}",
-    path    => '/bin:/sbin:/usr/bin:/usr/sbin',
-    unless  => "diff /etc/sudoers ${tmpfile}",
+  exec { 'Visudo syntax check sudoers':
+    command   => "visudo -c -f ${tmpfile}",
+    path      => '/bin:/sbin:/usr/bin:/usr/sbin',
+    unless    => "diff /etc/sudoers ${tmpfile}",
+    before    => File['/etc/sudoers'],
+    subscribe => File[$tmpfile],
+    logoutput => 'on_failure',
   }
 
   file { '/etc/sudoers':
     source  => $tmpfile,
-    require => Exec['visudo sudoers'],
   }
-
-  # Something with visudo -c -f /tmp/sudoers
 }
